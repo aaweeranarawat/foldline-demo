@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>window.FOLDLINE_STATIC=true</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Foldline — Compare protein structure predictions</title>
+<meta name="description" content="Paste a protein sequence, choose up to three prediction models, and overlay their structures to see where they agree and see where they agree, with the confidence metrics, plots and citations you need.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314304f'/%3E%3Cpath d='M6 23c7-1 2-17 10-17 7 0 2 20 7 20 5 0 5-11 2-14M6 11c-4 6 5 15 12 7' fill='none' stroke='%238ec5ff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/molstar.css">
+<link rel="stylesheet" href="foldline.css">
+<link rel="stylesheet" href="landing.css">
+<link rel="stylesheet" href="app-assets/predict.css">
+</head>
+<body>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="fold" viewBox="0 0 32 32"><path d="M6 23c7-1 2-17 10-17 7 0 2 20 7 20 5 0 5-11 2-14M6 11c-4 6 5 15 12 7"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-7"/></symbol>
+  <symbol id="doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5"/></symbol>
+  <symbol id="pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path d="M7 4v16l13-8Z"/></symbol>
+</svg>
+
+<a class="skip" href="#start">Skip to the form</a>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="index.html"><svg><use href="#fold"/></svg>foldline</a>
+    <nav class="crumbs land-nav" aria-label="Page sections">
+      <a href="#targets">Targets</a><a href="#features">Features</a><a href="#how">How it works</a><a href="#example">Results</a>
+    </nav>
+    <div class="topbar-actions">
+      <a class="btn small primary" href="compare.html">View results<svg><use href="#arrow"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<main class="landing" id="overview">
+
+  <section class="sec start first" id="start" aria-label="Start a comparison">
+    <div class="wrap">
+      <div id="predict-root"></div>
+      <noscript><p class="note">The sequence form needs JavaScript. You can still <a href="compare.html">open the results</a>.</p></noscript>
+    </div>
+  </section>
+
+  <section class="strip" aria-label="Metrics reported">
+    <div class="wrap strip-in">
+      <span class="strip-l">Reports the metrics reviewers ask for</span>
+      <ul class="pills"><li>pLDDT</li><li>pTM</li><li>Cα-RMSD</li><li>GDT-TS</li><li>Predicted aligned error</li></ul>
+    </div>
+  </section>
+
+  <section class="sec" id="features" aria-labelledby="feat-h">
+    <div class="wrap">
+      <p class="eyebrow dark">What you get</p>
+      <h2 id="feat-h">Everything on one results page</h2>
+      <div class="cards">
+        <article class="card reveal">
+          <span class="ico"><svg><use href="#layers"/></svg></span>
+          <h3>Overlay the models</h3>
+          <p>Structures are superposed on Cα atoms against a reference model. Toggle each model on and off, and colour by model or by pLDDT confidence.</p>
+        </article>
+        <article class="card reveal">
+          <span class="ico"><svg><use href="#chart"/></svg></span>
+          <h3>See where they differ</h3>
+          <p>Per-residue pLDDT and deviation plots, pairwise RMSD, GDT-TS and aligned-error maps. Hover any residue for exact values, and the sequence view highlights it too.</p>
+        </article>
+        <article class="card reveal">
+          <span class="ico"><svg><use href="#doc"/></svg></span>
+          <h3>Take it into your paper</h3>
+          <p>Download the PDB files and a per-residue CSV, copy a ready-made methods sentence with citations, and search the literature on the same page.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <p class="eyebrow dark">How it works</p>
+      <h2 id="how-h">From sequence to comparison in three steps</h2>
+      <ol class="steps">
+        <li class="reveal"><span class="n">1</span><h3>Provide a sequence</h3><p>Paste or upload a FASTA file, such as <span class="mono">ubiquitin.fasta</span>.</p></li>
+        <li class="reveal"><span class="n">2</span><h3>Choose up to three models</h3><p>Pick from AlphaFold 2, ESMFold, Chai Discovery, Rosetta and Boltz. Each model's status is shown as it finishes.</p></li>
+        <li class="reveal"><span class="n">3</span><h3>Compare the results</h3><p>Open the comparison page: overlay, metrics, plots, sequence view, downloads and citations.</p></li>
+      </ol>
+      <div class="mock-wrap">
+        <p class="mock-cap">What the “models run” step will look like (mock-up)</p>
+        <div id="job-mock-root"></div>
+        <p class="note"><b>Preview build:</b> submitting new predictions isn't connected in this version. The panel above is a mock-up of that step; the results below are real outputs already downloaded.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="example" aria-labelledby="ex-h">
+    <div class="wrap">
+      <p class="eyebrow dark">Results</p>
+      <h2 id="ex-h">Ubiquitin: ESMFold shown, 4 predictions in the full comparison</h2>
+      <div class="res-grid">
+      <figure class="hero-viz res-viz" aria-label="Interactive 3D view of the ubiquitin result">
+        <div class="viz-frame" data-lenis-prevent>
+          <div id="molstar-viewer"></div>
+          <button class="viz-ctl" id="spin-toggle" type="button" aria-pressed="false" title="Pause rotation"><svg><use href="#pause"/></svg><span class="sr-only">Pause rotation</span></button>
+          <div class="viz-fallback" id="viz-fallback" hidden>3D preview needs WebGL. Open the results page to see everything.</div>
+        </div>
+        <figcaption>
+          <span><b>Ubiquitin</b> · ESMFold result · drag to rotate</span>
+          <span class="viz-legend" aria-label="pLDDT colour key">
+            <i style="background:#0053d6"></i>&gt;90 <i style="background:#65cbf3"></i>70–90 <i style="background:#ffdb13"></i>50–70 <i style="background:#ff7d45"></i>&lt;50 <small>pLDDT</small>
+          </span>
+        </figcaption>
+      </figure>
+      <div class="example reveal">
+        <dl class="stats" id="ex-stats">
+          <div><dt>Mean pLDDT</dt><dd class="num">85.8</dd></div>
+          <div><dt>pTM</dt><dd class="num">0.829</dd></div>
+          <div><dt>Residues below 70</dt><dd class="num">4 <small>of 76</small></dd></div>
+        </dl>
+        <div class="ex-dist">
+          <div class="ex-h">pLDDT distribution</div>
+          <div class="dist-bar" id="ex-bar" role="img" aria-label="Share of residues per confidence band"></div>
+          <ul class="dist-list" id="ex-list"></ul>
+        </div>
+        <a class="btn primary" href="compare.html">Open the full comparison<svg><use href="#arrow"/></svg></a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="land-foot">
+  <div class="wrap foot-in"><span class="brand sm"><svg><use href="#fold"/></svg>foldline</span><span>Predictions run on AWS HealthOmics · US East</span><span>Comparison preview</span></div>
+</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="vendor/molstar.min.js"></script>
+<script src="landing.js"></script>
+<script type="module" src="app-assets/predict.js"></script>
+</body>
+</html>

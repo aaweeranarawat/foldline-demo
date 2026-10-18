@@ -1,0 +1,124 @@
+/* Landing page. Builds on foldline.css (tokens, topbar, buttons). */
+.landing{max-width:none;padding:0;margin:0}
+.wrap{max-width:1200px;margin:auto;padding:0 28px}
+.land-nav{gap:26px;margin-left:12px}
+.land-nav a{color:#b9cbe2;text-decoration:none;font-weight:600}
+.land-nav a:hover{color:#fff}
+.mono{font-family:var(--mono)}
+
+/* hero */
+.hero{position:relative;background:var(--navy);color:#fff;padding:64px 0 72px;overflow:hidden}
+/* Vanta draws its canvas behind everything; a left-side fade keeps the headline legible over it */
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(20,48,79,.92) 0%,rgba(20,48,79,.62) 42%,rgba(20,48,79,0) 72%)}
+.hero .vanta-canvas{z-index:0!important}
+.hero-grid{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:48px;align-items:center}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#8ec5ff;margin:0 0 14px}
+.eyebrow.dark{color:var(--brand)}
+.hero h1{font-size:clamp(36px,5vw,58px);line-height:1.07;letter-spacing:-1.8px;font-weight:750;margin:0}
+.accent{color:#8ec5ff}
+.lede{font-size:18px;line-height:1.6;color:#cfdcec;margin:22px 0 0;max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn.big{height:48px;padding:0 20px;font-size:16px;border-radius:10px}
+.btn.primary-light{background:#fff;border-color:#fff;color:var(--navy)}
+.btn.primary-light:hover{background:#e7f0fb;color:var(--navy)}
+.btn.ghost-light{background:transparent;border-color:rgba(255,255,255,.4);color:#fff}
+.btn.ghost-light:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
+.fine{font-size:14px;color:#a9bdd6;margin:22px 0 0;max-width:520px}
+
+.hero-viz{margin:0}
+.viz-frame{position:relative;height:500px;border-radius:16px;background:#102a47;border:1px solid rgba(255,255,255,.14);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.28)}
+.viz-frame #molstar-viewer{position:absolute;inset:0}
+.viz-ctl{position:absolute;top:12px;right:12px;z-index:3;width:38px;height:38px;border-radius:9px;border:1px solid rgba(255,255,255,.3);background:rgba(16,42,71,.7);color:#fff;display:grid;place-items:center}
+.viz-ctl:hover{background:rgba(255,255,255,.18)}
+.viz-fallback{position:absolute;inset:0;display:grid;place-items:center;padding:30px;text-align:center;color:#cfdcec}
+.hero-viz figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 18px;margin-top:12px;font-size:14px;color:#b9cbe2}
+.hero-viz figcaption b{color:#fff}
+.viz-legend{display:inline-flex;align-items:center;gap:6px}
+.viz-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-left:8px}
+.viz-legend small{margin-left:8px;opacity:.8}
+
+/* metrics strip */
+.strip{background:#fff;border-bottom:1px solid var(--line)}
+.strip-in{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding-top:20px;padding-bottom:20px}
+.strip-l{font-size:14px;font-weight:650;color:var(--muted)}
+.pills{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pills li{padding:5px 13px;border-radius:999px;background:var(--brand-tint);color:var(--brand-ink);font-size:14px;font-weight:650}
+
+/* sections */
+.sec{padding:76px 0}
+.sec.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec h2{font-size:clamp(28px,3.4vw,38px);line-height:1.15;letter-spacing:-1px;font-weight:750;margin:0 0 34px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;box-shadow:var(--shadow)}
+.card h3{font-size:19px;margin:16px 0 8px;letter-spacing:-.3px}
+.card p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.6}
+.ico{display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--brand-tint);color:var(--brand)}
+.ico svg{width:24px;height:24px}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.steps li{position:relative;padding:4px 4px 0 0}
+.steps .n{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--brand);color:#fff;font-weight:750;font-size:17px}
+.steps h3{font-size:19px;margin:14px 0 6px;letter-spacing:-.3px}
+.steps p{margin:0;color:var(--ink-2);font-size:15.5px}
+.note{margin:30px 0 0;padding:14px 18px;border-radius:10px;background:var(--warn-bg);color:var(--warn-ink);font-size:15px}
+
+.example{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:28px 44px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 30px;box-shadow:var(--shadow)}
+.stats{display:flex;gap:34px;margin:0}
+.stats dt{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stats dd{font-size:34px;font-weight:750;letter-spacing:-1px;line-height:1.2;margin:2px 0 0}
+.stats small{font-size:15px;font-weight:500;color:var(--muted);letter-spacing:0}
+.ex-h{font-size:14px;font-weight:700;margin-bottom:8px}
+
+.land-foot{background:var(--navy);color:#b9cbe2;padding:26px 0;font-size:14px}
+.foot-in{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 24px}
+.brand.sm{font-size:18px;color:#fff}
+.brand.sm svg{width:22px;height:22px}
+
+/* reveal on scroll (only when JS is on; respects reduced motion) */
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.js .reveal.in{opacity:1;transform:none}
+.cards .reveal:nth-child(2),.steps .reveal:nth-child(2){transition-delay:.08s}
+.cards .reveal:nth-child(3),.steps .reveal:nth-child(3){transition-delay:.16s}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+
+@media (max-width:960px){
+  .hero{padding:44px 0 52px}
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .viz-frame{height:400px}
+  .cards,.steps{grid-template-columns:1fr}
+  .example{grid-template-columns:1fr}
+  .land-nav{display:none}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .stats{flex-wrap:wrap;gap:18px 28px}
+  .sec{padding:52px 0}
+  .viz-frame{height:340px}
+}
+
+/* split-text headline: each word sits in a mask so it can rise into place */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.wi{display:inline-block;will-change:transform}
+
+/* Lenis (from its stylesheet): let it own smooth scrolling */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+.lenis.lenis-smooth iframe{pointer-events:none}
+
+/* when GSAP drives the reveals, drop the CSS transition so the two don't fight */
+.js.gsap-on .reveal{transition:none}
+
+/* start-a-comparison section (React island, see app/src/predict) */
+.sec.start{background:radial-gradient(900px 340px at 50% 0%,#dce9fb,transparent 70%),var(--bg);padding:64px 0 72px}
+
+/* first screen is the form; results section hosts the 3D viewer */
+.sec.start.first{padding:26px 0 56px}
+.res-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:start}
+.res-grid .example{grid-template-columns:minmax(0,1fr);gap:22px}
+.res-grid .stats{flex-wrap:wrap;gap:18px 30px}
+#example .hero-viz figcaption{color:var(--muted)}#example .hero-viz figcaption b{color:var(--ink)}
+#example .viz-frame{height:440px}
+@media (max-width:960px){.res-grid{grid-template-columns:minmax(0,1fr)}}
